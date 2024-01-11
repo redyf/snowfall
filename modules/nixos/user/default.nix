@@ -32,7 +32,7 @@ with lib.custom; let
     '';
 in {
   options.user = with types; {
-    name = mkOpt str "iogamaster" "The name to use for the user account.";
+    name = mkOpt str "redyf" "The name to use for the user account.";
     initialPassword =
       mkOpt str "password"
       "The initial password to use when the user is first created.";
@@ -50,7 +50,7 @@ in {
       propagatedIcon
     ];
 
-    environment.sessionVariables.FLAKE = "/home/iogamaster/.dotfiles";
+    environment.sessionVariables.FLAKE = "/home/redyf/.nixdots";
 
     home = {
       file = {
@@ -75,7 +75,7 @@ in {
         group = "users";
 
         extraGroups =
-          ["wheel" "audio" "sound" "video" "networkmanager" "input" "tty" "docker"]
+          ["wheel" "audio" "sound" "video" "networkmanager" "input" "tty" "docker" "libvirtd"]
           ++ cfg.extraGroups;
       }
       // cfg.extraOptions;

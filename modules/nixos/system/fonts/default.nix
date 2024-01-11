@@ -25,10 +25,13 @@ in {
     fonts.packages = with pkgs;
       [
         noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-emoji
-        (nerdfonts.override {fonts = ["JetBrainsMono"];})
+        dejavu_fonts
+        font-awesome
+        fira-code-symbols
+        powerline-symbols
+        material-design-icons
+        commit-mono
+        (nerdfonts.override {fonts = ["IBMPlexMono" "CascadiaCode" "FiraCode" "FiraMono" "JetBrainsMono" "Ubuntu"];})
       ]
       ++ cfg.fonts;
   };

@@ -19,6 +19,7 @@ in {
       nil
       nixfmt
       nix-index
+      nix-init
       nix-prefetch-git
     ];
 
@@ -35,6 +36,8 @@ in {
           log-lines = 50;
           sandbox = "relaxed";
           auto-optimise-store = true;
+          substituters = ["https://hyprland.cachix.org"];
+          trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
           trusted-users = users;
           allowed-users = users;
         }
