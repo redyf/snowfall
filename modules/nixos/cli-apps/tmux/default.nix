@@ -16,7 +16,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.tmux = {
+    home.extraOptions.tmux = {
       enable = true;
       clock24 = true;
       baseIndex = 1;
@@ -24,6 +24,7 @@ in {
       escapeTime = 500;
       keyMode = "vi";
       prefix = "C-Space";
+      mouse = true;
       extraConfig = ''
         # Shift Alt vim keys to switch windows
         # bind -n M-H previous-window
