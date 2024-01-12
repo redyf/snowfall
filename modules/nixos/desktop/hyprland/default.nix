@@ -38,7 +38,7 @@ in {
         wl-paste | swappy -f -
       '')
     ];
-    programs.hyprland = {
+    home.extraOptions.hyprland = {
       enable = true;
       package = pkgs.hyprland;
       xwayland = {
