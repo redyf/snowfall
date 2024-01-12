@@ -17,7 +17,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [kitty];
-    xdg = {
+    home.extraOptions.xdg = {
       configFile = {
         "kitty/kitty.conf".text = import ./kitty.nix;
         "kitty/themes/challenger_deep.conf".text = import ./challenger-deep.nix;
