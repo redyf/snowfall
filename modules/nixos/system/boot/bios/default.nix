@@ -20,15 +20,12 @@ in {
       kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
       supportedFilesystems = ["ntfs"];
       loader = {
-        systemd-boot.enable = false;
-        timeout = 10;
         efi = {
           canTouchEfiVariables = true;
           efiSysMountPoint = "/boot";
         };
         grub = {
           enable = true;
-          device = "nodev";
           devices = "/dev/vda";
           efiSupport = true;
           useOSProber = true;
@@ -41,13 +38,6 @@ in {
               rev = "193b3a7c3d432f8c6af10adfb465b781091f56b3";
               sha256 = "1bvkfmjzbk7pfisvmyw5gjmcqj9dab7gwd5nmvi8gs4vk72bl2ap";
             };
-
-          # theme = pkgs.fetchFromGitHub {
-          #   owner = "shvchk";
-          #   repo = "fallout-grub-theme";
-          #   rev = "80734103d0b48d724f0928e8082b6755bd3b2078";
-          #   sha256 = "sha256-7kvLfD6Nz4cEMrmCA9yq4enyqVyqiTkVZV5y4RyUatU=";
-          # };
         };
       };
     };

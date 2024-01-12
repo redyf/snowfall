@@ -21,7 +21,7 @@ in {
       supportedFilesystems = ["ntfs"];
       loader = {
         systemd-boot = {
-          enable = false;
+          enable = true;
           configurationLimit = 5;
         };
         timeout = 10;
