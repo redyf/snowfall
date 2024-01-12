@@ -8,10 +8,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.wezterm;
+  cfg = config.desktop.addons.wezterm;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
 in {
-  options.apps.wezterm = with types; {
+  options.desktop.addons.wezterm = with types; {
     enable = mkBoolOpt false "Enable or disable the wezterm terminal.";
   };
 

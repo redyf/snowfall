@@ -8,11 +8,11 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.foot;
+  cfg = config.desktop.addons.foot;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
 in {
-  options.apps.foot = with types; {
-    enable = mkBoolOpt false "Enable or disable the foot terminal.";
+  options.desktop.addons.foot = with types; {
+    enable = mkBoolOpt false "Enable or disable foot terminal.";
   };
 
   config = mkIf cfg.enable {

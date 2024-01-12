@@ -8,10 +8,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.kitty;
+  cfg = config.desktop.addons.kitty;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
 in {
-  options.apps.kitty = with types; {
+  options.desktop.addons.kitty = with types; {
     enable = mkBoolOpt false "Enable or disable the kitty terminal.";
   };
 

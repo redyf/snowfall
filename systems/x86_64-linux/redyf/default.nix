@@ -20,7 +20,6 @@
   # Enable programs
   programs = {
     zsh.enable = true;
-    steam.enable = true;
     dconf.enable = true;
     hyprland = {
       enable = true;
@@ -110,16 +109,6 @@
       displayManager = {
         gdm.enable = true;
       };
-      desktopManager = {
-        xfce.enable = true;
-        # gnome.enable = true;
-      };
-      windowManager = {
-        xmonad = {
-          enable = true;
-          enableContribAndExtras = true;
-        };
-      };
       libinput = {
         enable = true;
         mouse = {
@@ -134,44 +123,11 @@
     flatpak.enable = false;
   };
 
-  # Use doas instead-of sudo
-  security = {
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      wheelNeedsPassword = true;
-      extraRules = [
-        {
-          users = ["redyf"];
-          keepEnv = true;
-          persist = true;
-        }
-      ];
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     git
     wget
     playerctl
-    inputs.xdg-portal-hyprland.packages.${system}.xdg-desktop-portal-hyprland
   ];
-
-  # Enables flakes + garbage collector
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-    settings = {
-      auto-optimise-store = true;
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
