@@ -27,7 +27,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.waybar = {
+    home.extraOptions.waybar = {
       enable = true;
       package = pkgs.waybar;
       settings = waybar_config;

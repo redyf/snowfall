@@ -16,7 +16,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.wezterm = {
+    home.extraOptions.wezterm = {
       enable = true;
       extraConfig = ''
         local wezterm = require "wezterm"
