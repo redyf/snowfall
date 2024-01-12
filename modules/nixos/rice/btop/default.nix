@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.btop = {
+    home.extraOptions.btop = {
       enable = true;
       settings = {
         color_theme = "catppuccin_macchiato";
