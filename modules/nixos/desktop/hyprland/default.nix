@@ -26,7 +26,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland = {
+    programs.hyprland = {
       enable = true;
       package = pkgs.hyprland;
       xwayland = {
