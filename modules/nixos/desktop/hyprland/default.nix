@@ -26,6 +26,18 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      grim
+      slurp
+      swappy
+
+      (writeShellScriptBin "screenshot" ''
+        grim -g "$(slurp)" - | wl-copy
+      '')
+      (writeShellScriptBin "screenshot-edit" ''
+        wl-paste | swappy -f -
+      '')
+    ];
     programs.hyprland = {
       enable = true;
       package = pkgs.hyprland;
@@ -318,32 +330,20 @@ in {
         #     # will reset the submap, meaning end the current one and return to the global one
         #     submap=reset
       '';
-      environment.systemPackages = with pkgs; [
-        grim
-        slurp
-        swappy
-
-        (writeShellScriptBin "screenshot" ''
-          grim -g "$(slurp)" - | wl-copy
-        '')
-        (writeShellScriptBin "screenshot-edit" ''
-          wl-paste | swappy -f -
-        '')
-      ];
-      # Hyprland configuration files
-      home.configFile = {
-        "hypr/autostart".source = ./autostart;
-        "hypr/store/dynamic_out.txt".source = ./store/dynamic_out.txt;
-        "hypr/store/prev.txt".source = ./store/prev.txt;
-        "hypr/store/latest_notif".source = ./store/latest_notif;
-        "hypr/scripts/wall".source = ./scripts/wall;
-        "hypr/scripts/launch_waybar".source = ./scripts/launch_waybar;
-        "hypr/script/tools/dynamic".source = ./scripts/tools/dynamic;
-        "hypr/script/tools/expand".source = ./scripts/tools/expand;
-        "hypr/script/tools/notif".source = ./scripts/tools/notif;
-        "hypr/script/tools/start_dyn".source = ./scripts/tools/start_dyn;
-        "hypr/script/tools/swww".source = ./scripts/tools/swww;
-      };
+    };
+    # Hyprland configuration files
+    home.configFile = {
+      "hypr/autostart".source = ./autostart;
+      "hypr/store/dynamic_out.txt".source = ./store/dynamic_out.txt;
+      "hypr/store/prev.txt".source = ./store/prev.txt;
+      "hypr/store/latest_notif".source = ./store/latest_notif;
+      "hypr/scripts/wall".source = ./scripts/wall;
+      "hypr/scripts/launch_waybar".source = ./scripts/launch_waybar;
+      "hypr/script/tools/dynamic".source = ./scripts/tools/dynamic;
+      "hypr/script/tools/expand".source = ./scripts/tools/expand;
+      "hypr/script/tools/notif".source = ./scripts/tools/notif;
+      "hypr/script/tools/start_dyn".source = ./scripts/tools/start_dyn;
+      "hypr/script/tools/swww".source = ./scripts/tools/swww;
     };
   };
 }
