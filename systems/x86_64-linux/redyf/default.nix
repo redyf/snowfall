@@ -31,9 +31,6 @@
 
   # Allow unfree packages + use overlays
   nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
     overlays = [
       (
         final: prev: {

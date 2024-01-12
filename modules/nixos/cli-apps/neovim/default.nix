@@ -14,15 +14,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.variables = {
-      EDITOR = "nvim";
+    environment = {
+      variables = {
+        EDITOR = "nvim";
+      };
+      systemPackages = with pkgs; [
+        neovim
+        lazygit
+        stylua
+        sumneko-lua-language-server
+        ripgrep
+      ];
     };
-    environment.systemPackages = [
-      pkgs.neovim
-      pkgs.lazygit
-      pkgs.stylua
-      pkgs.sumneko-lua-language-server
-      pkgs.ripgrep
-    ];
   };
 }

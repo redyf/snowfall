@@ -23,17 +23,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/hyprland";
     waybar-hyprland.url = "github:hyprwm/hyprland";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # SFMono w/ patches
     sf-mono-liga-src = {
@@ -59,8 +64,8 @@
 
       snowfall = {
         meta = {
-          name = "dotfiles";
-          title = "dotfiles";
+          name = "nixdots";
+          title = "nixdots";
         };
 
         namespace = "custom";
@@ -77,7 +82,16 @@
 
       overlays = with inputs; [];
 
-      systems.modules.nixos = with inputs; [];
+      # Add modules to all NixOS systems.
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        hyprland.nixosModules.default
+      ];
+
+      # Add a module to a specific host.
+      systems.hosts.wsl.modules = with inputs; [
+        NixOS-WSL.nixosModules.wsl
+      ];
 
       templates = import ./templates {};
     };
