@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.rice.cava;
+  cfg = config.rice.cava;
 in {
-  options.apps.cava = with types; {
+  options.rice.cava = with types; {
     enable = mkBoolOpt false "Enable or disable cava";
   };
 

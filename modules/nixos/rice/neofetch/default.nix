@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.rice.apps.neofetch;
+  cfg = config.rice.neofetch;
 in {
-  options.apps.rice.neofetch = with types; {
+  options.rice.neofetch = with types; {
     enable = mkBoolOpt false "Enable or disable neofetch";
   };
 

@@ -141,7 +141,6 @@ in {
 
         zsh = mkIf (cfg.shell == "zsh") {
           enable = true;
-          enable = true;
           dotDir = ".config/zsh";
           enableCompletion = true;
           enableAutosuggestions = true;

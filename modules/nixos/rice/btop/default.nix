@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.btop;
+  cfg = config.rice.btop;
 in {
-  options.apps.rice.btop = with types; {
+  options.rice.btop = with types; {
     enable = mkBoolOpt false "Enable or disable btop";
   };
 
