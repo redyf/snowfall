@@ -124,6 +124,7 @@
     git
     wget
     playerctl
+    deploy-rs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
