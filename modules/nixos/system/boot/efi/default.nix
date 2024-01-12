@@ -24,10 +24,8 @@ in {
           enable = true;
           configurationLimit = 5;
         };
-        timeout = 10;
         efi = {
           canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot";
         };
       };
     };

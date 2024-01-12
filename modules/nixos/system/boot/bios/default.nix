@@ -20,16 +20,9 @@ in {
       kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
       supportedFilesystems = ["ntfs"];
       loader = {
-        efi = {
-          canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot";
-        };
         grub = {
           enable = true;
-          devices = "/dev/vda";
-          efiSupport = true;
-          useOSProber = true;
-          configurationLimit = 5;
+          device = "nodev";
           theme =
             pkgs.fetchFromGitHub
             {
