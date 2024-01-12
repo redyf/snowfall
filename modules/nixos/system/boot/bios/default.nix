@@ -29,6 +29,7 @@ in {
         grub = {
           enable = true;
           device = "nodev";
+          devices = "/dev/vda";
           efiSupport = true;
           useOSProber = true;
           configurationLimit = 5;
