@@ -16,7 +16,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs = {
+    home.extraOptions = {
       foot = {
         enable = true;
         server.enable = true;
