@@ -25,9 +25,6 @@ in {
           enable = true;
           enableContribAndExtras = true;
         };
-        displayManager = {
-          gdm.enable = true;
-        };
       };
     };
   };
