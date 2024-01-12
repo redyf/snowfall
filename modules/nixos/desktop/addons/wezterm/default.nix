@@ -75,7 +75,7 @@ in {
       '';
     };
 
-    xdg.configFile."wezterm/colors/.oxocarbon-dark.toml".text = ''
+    home.extraOptions.xdg.configFile."wezterm/colors/.oxocarbon-dark.toml".text = ''
       [colors]
       background = '#161616'
         foreground = '#ffffff'
