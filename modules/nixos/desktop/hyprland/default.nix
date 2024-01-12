@@ -38,7 +38,7 @@ in {
         wl-paste | swappy -f -
       '')
     ];
-    home.extraOptions.hyprland = {
+    home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
       package = pkgs.hyprland;
       xwayland = {
