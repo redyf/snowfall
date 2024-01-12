@@ -20,7 +20,7 @@ in {
       GTK_THEME = "Catppuccin-Mocha-Compact-Blue-dark";
     };
 
-    gtk = {
+    home.extraOptions.gtk = {
       enable = true;
       cursorTheme = {
         name = "macOS-BigSur";
