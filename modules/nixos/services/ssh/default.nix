@@ -16,13 +16,14 @@ in {
     services.openssh = {
       enable = true;
       ports = [22];
-      PermitRootLogin = "prohibit-password";
+      settings = {
+        PermitRootLogin = "prohibit-password";
+      };
     };
 
-    users.users = let 
-        publicKey = ""; # Enter your ssh public key
-    in
-    {
+    users.users = let
+      publicKey = ""; # Enter your ssh public key
+    in {
       root.openssh.authorizedKeys.keys = [
         publicKey
       ];
@@ -32,7 +33,7 @@ in {
     };
 
     home.file.".ssh/config".text = ''
-      identityfile ~/.ssh/key 
+      identityfile ~/.ssh/key
     '';
   };
 }
