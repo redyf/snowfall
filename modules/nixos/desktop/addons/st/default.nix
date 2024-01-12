@@ -16,7 +16,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       (st.overrideAttrs (oldAttrs: rec {
         buildInputs = oldAttrs.buildInputs ++ [harfbuzz];
         patches = [

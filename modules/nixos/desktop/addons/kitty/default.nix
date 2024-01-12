@@ -16,7 +16,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [kitty];
+    environment.systemPackages = with pkgs; [kitty];
     xdg = {
       configFile = {
         "kitty/kitty.conf".text = import ./kitty.nix;
