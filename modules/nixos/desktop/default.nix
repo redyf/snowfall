@@ -41,11 +41,11 @@ in {
         name = "Papirus-Dark";
         package = pkgs.papirus-folders;
       };
+    };
 
-      services.xserver.displayManager.autoLogin = mkIf cfg.autoLogin {
-        enable = true;
-        user = config.user.name;
-      };
+    services.xserver.displayManager.autoLogin = mkIf cfg.autoLogin {
+      enable = true;
+      user = config.user.name;
     };
   };
 }
