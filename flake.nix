@@ -57,30 +57,50 @@
     };
   };
 
-  outputs = inputs: let
-    lib = inputs.snowfall-lib.mkLib {
-      inherit inputs;
-      src = ./.;
+  outputs = inputs:
+    let
+      lib = inputs.snowfall-lib.mkLib {
+        inherit inputs;
+        src = ./.;
 
-      snowfall = {
-        meta = {
-          name = "nixdots";
-          title = "nixdots";
+        snowfall = {
+          meta = {
+            name = "nixdots";
+            title = "nixdots";
+          };
+
+          namespace = "custom";
         };
-
-        namespace = "custom";
       };
-    };
-  in
+    in
     lib.mkFlake {
       inherit inputs;
       src = ./.;
 
       channels-config = {
         allowUnfree = true;
+        allowUnfreePredicate = pkg: true;
+        packageOverrides = pkgs: {
+          # integrates nur within Home-Manager
+          nur =
+            import
+              (builtins.fetchTarball {
+                url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
+                sha256 = "sha256:1gr3l5fcjsd7j9g6k9jamby684k356a36h82cwck2vcxf8yw8xa0";
+              })
+              { inherit pkgs; };
+        };
       };
 
-      overlays = with inputs; [];
+      overlays = with inputs; [ ];
+
+      # You can also pass through external packages or dynamically create new ones
+      # in addition to the ones that `lib` will create from your `packages/` directory.
+      outputs-builder = channels: {
+        packages = {
+          spicetify-nix = inputs.spicetify-nix.packages.${channels.nixpkgs.system}.default;
+        };
+      };
 
       # Add modules to all NixOS systems.
       systems.modules.nixos = with inputs; [
@@ -93,14 +113,16 @@
         NixOS-WSL.nixosModules.wsl
       ];
 
-      deploy = lib.mkDeploy {inherit (inputs) self;};
+      deploy = lib.mkDeploy {
+        inherit (inputs) self;
+      };
 
       checks =
         builtins.mapAttrs
-        (_system: deploy-lib:
-          deploy-lib.deployChecks inputs.self.deploy)
-        inputs.deploy-rs.lib;
+          (_system: deploy-lib:
+            deploy-lib.deployChecks inputs.self.deploy)
+          inputs.deploy-rs.lib;
 
-      templates = import ./templates {};
+      templates = import ./templates { };
     };
 }

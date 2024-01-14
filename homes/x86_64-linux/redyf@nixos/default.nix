@@ -1,20 +1,25 @@
 {
   # Snowfall Lib provides a customized `lib` instance with access to your flake's library
   # as well as the libraries available from your flake's inputs.
-  lib,
-  # An instance of `pkgs` with your overlays and packages applied is also available.
-  pkgs,
-  # You also have access to your flake's inputs.
-  inputs,
-  # Additional metadata is provided by Snowfall Lib.
-  home, # The home architecture for this host (eg. `x86_64-linux`).
-  target, # The Snowfall Lib target for this home (eg. `x86_64-home`).
-  format, # A normalized name for the home target (eg. `home`).
-  virtual, # A boolean to determine whether this home is a virtual target using nixos-generators.
-  host, # The host name for this home.
+  lib
+, # An instance of `pkgs` with your overlays and packages applied is also available.
+  pkgs
+, # You also have access to your flake's inputs.
+  inputs
+, # Additional metadata is provided by Snowfall Lib.
+  home
+, # The home architecture for this host (eg. `x86_64-linux`).
+  target
+, # The Snowfall Lib target for this home (eg. `x86_64-home`).
+  format
+, # A normalized name for the home target (eg. `home`).
+  virtual
+, # A boolean to determine whether this home is a virtual target using nixos-generators.
+  host
+, # The host name for this home.
   # All other arguments come from the home home.
-  config,
-  ...
+  config
+, ...
 }: {
   home = {
     username = "redyf";
@@ -34,29 +39,6 @@
   # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
-  };
-
-  # Overlays
-  nixpkgs = {
-    overlays = [
-      # (import (builtins.fetchTarball {
-      #   url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-      # }))
-      (import ../../overlays/firefox-overlay.nix)
-    ];
-    config = {
-      allowUnfreePredicate = pkg: true;
-      packageOverrides = pkgs: {
-        # integrates nur within Home-Manager
-        nur =
-          import
-          (builtins.fetchTarball {
-            url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
-            sha256 = "sha256:1gr3l5fcjsd7j9g6k9jamby684k356a36h82cwck2vcxf8yw8xa0";
-          })
-          {inherit pkgs;};
-      };
-    };
   };
 
   fonts.fontconfig.enable = true;
