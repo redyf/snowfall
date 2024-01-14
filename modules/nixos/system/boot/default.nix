@@ -20,10 +20,19 @@ in
       kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
       supportedFilesystems = [ "ntfs" ];
       loader = {
+        systemd-boot.enable = false;
+        timeout = 20;
+        efi = {
+          canTouchEfiVariables = true;
+          efiSysMountPoint = "/boot";
+        };
         grub = {
           enable = true;
           # device = [ "nodev" ];
-          devices = [ "/dev/nvme0n1" ];
+          devices = "/dev/nvme0n1";
+          efiSupport = true;
+          useOSProber = true;
+          configurationLimit = 5;
           theme =
             pkgs.fetchFromGitHub
               {
