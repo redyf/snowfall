@@ -1,22 +1,22 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, inputs
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.cli-apps.tmux;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
-in {
+in
+{
   options.cli-apps.tmux = with types; {
     enable = mkBoolOpt false "Enable or disable the tmux terminal.";
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.tmux = {
+    home.extraOptions.programs.tmux = {
       enable = true;
       clock24 = true;
       baseIndex = 1;

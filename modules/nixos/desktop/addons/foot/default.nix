@@ -1,23 +1,23 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, inputs
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.desktop.addons.foot;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
-in {
+in
+{
   options.desktop.addons.foot = with types; {
     enable = mkBoolOpt false "Enable or disable foot terminal.";
   };
 
   config = mkIf cfg.enable {
     home.extraOptions = {
-      foot = {
+      programs.foot = {
         enable = true;
         server.enable = true;
         settings = {

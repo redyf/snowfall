@@ -1,22 +1,22 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, inputs
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.desktop.addons.wezterm;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
-in {
+in
+{
   options.desktop.addons.wezterm = with types; {
     enable = mkBoolOpt false "Enable or disable the wezterm terminal.";
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.wezterm = {
+    home.extraOptions.programs.wezterm = {
       enable = true;
       extraConfig = ''
         local wezterm = require "wezterm"

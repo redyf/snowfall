@@ -38,7 +38,11 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    Neve.url = "github:redyf/Neve";
 
     # SFMono w/ patches
     sf-mono-liga-src = {
@@ -59,6 +63,7 @@
 
   outputs = inputs:
     let
+      inherit (inputs) spicetify-nix;
       lib = inputs.snowfall-lib.mkLib {
         inherit inputs;
         src = ./.;
@@ -92,21 +97,19 @@
         };
       };
 
-      overlays = with inputs; [ ];
-
       # You can also pass through external packages or dynamically create new ones
       # in addition to the ones that `lib` will create from your `packages/` directory.
-      outputs-builder = channels: {
-        packages = {
-          spicetify-nix = inputs.spicetify-nix.packages.${channels.nixpkgs.system}.default;
-        };
-      };
+      # outputs-builder = channels: {
+      #   packages = {
+      #     spicetify-nix = inputs.spicetify-nix.packages.${channels.nixpkgs.system}.spicetify-nix;
+      #   };
+      # };
+
+      # overlays = with inputs; [ ];
 
       # Add modules to all NixOS systems.
-      systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
-        hyprland.nixosModules.default
-      ];
+      # systems.modules.nixos = with inputs; [
+      # ];
 
       # Add a module to a specific host.
       systems.hosts.wsl.modules = with inputs; [

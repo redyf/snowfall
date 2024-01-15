@@ -6,11 +6,11 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.cli-apps.neovim;
+  cfg = config.cli-apps.neve;
 in
 {
-  options.cli-apps.neovim = with types; {
-    enable = mkBoolOpt false "Enable or disable neovim";
+  options.cli-apps.neve = with types; {
+    enable = mkBoolOpt false "Enable or disable Neve";
   };
 
   config = mkIf cfg.enable {
@@ -19,7 +19,7 @@ in
         EDITOR = "nvim";
       };
       systemPackages = with pkgs; [
-        neovim
+        inputs.Neve.packages.${system}.default
         lazygit
         stylua
         sumneko-lua-language-server

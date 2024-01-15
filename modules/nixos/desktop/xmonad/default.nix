@@ -1,15 +1,15 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.desktop.xmonad;
-in {
+in
+{
   options.desktop.xmonad = with types; {
     enable = mkBoolOpt false "Enable or disable xmonad Window Manager";
   };

@@ -1,19 +1,20 @@
-{
-  options,
-  config,
-  lib,
-  ...
+{ options
+, pkgs
+, config
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.hardware.nvidia;
-in {
+in
+{
   options.hardware.nvidia = with types; {
     enable = mkBoolOpt false "Enable drivers and patches for Nvidia hardware.";
   };
 
   config = mkIf cfg.enable {
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
     hardware = {
       nvidia = {
         open = false;
@@ -25,7 +26,7 @@ in {
       opengl = {
         enable = true;
         driSupport32Bit = true;
-        extraPackages = with pkgs; [nvidia-vaapi-driver];
+        extraPackages = with pkgs; [ nvidia-vaapi-driver ];
       };
     };
 
@@ -47,7 +48,7 @@ in {
         # WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor rendering issue on wlr nvidia.
         DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox"; # Set default browser
       };
-      shellAliases = {nvidia-settings = "nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings";};
+      shellAliases = { nvidia-settings = "nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"; };
     };
   };
 }

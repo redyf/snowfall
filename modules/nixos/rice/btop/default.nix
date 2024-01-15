@@ -1,20 +1,20 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.rice.btop;
-in {
+in
+{
   options.rice.btop = with types; {
     enable = mkBoolOpt false "Enable or disable btop";
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.btop = {
+    home.extraOptions.programs.btop = {
       enable = true;
       settings = {
         color_theme = "catppuccin_macchiato";

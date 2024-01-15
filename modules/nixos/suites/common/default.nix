@@ -1,47 +1,23 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, ...
 }:
+# TODO: Habilitar todos os apps por aqui e depois mudar o mkbool para true para ver se funciona
+# TODO: obs: funcionou hahahai
 with lib;
 with lib.custom; let
   cfg = config.suites.common;
-in {
+in
+{
   options.suites.common = with types; {
-    enable = mkBoolOpt false "Enable the common suite";
+    enable = mkBoolOpt true "Enable the common suite";
   };
 
   config = mkIf cfg.enable {
-    system.nix.enable = true;
-    system.security.doas.enable = true;
-
-    hardware.audio.enable = true;
-    hardware.networking.enable = true;
-
-    # hardware.bluetooth.enable = true;
-    # hardware.bluetooth.settings = {
-    #   General = {
-    #     FastConnectable = true;
-    #     JustWorksRepairing = "always";
-    #     Privacy = "device";
-    #   };
-    #   Policy = {
-    #     AutoEnable = true;
-    #   };
-    # };
-
-    services.ssh.enable = true;
-    programs.dconf.enable = true;
-
-    environment.systemPackages = [pkgs.bluetuith pkgs.custom.sys];
-
-    system = {
-      fonts.enable = true;
-      locale.enable = true;
-      time.enable = true;
-      xkb.enable = true;
+    virtualization.kvm = {
+      enable = true;
     };
   };
 }

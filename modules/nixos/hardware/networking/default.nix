@@ -1,13 +1,13 @@
-{
-  options,
-  config,
-  lib,
-  ...
+{ options
+, config
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.hardware.networking;
-in {
+in
+{
   options.hardware.networking = with types; {
     enable = mkBoolOpt false "Enable pipewire";
   };
@@ -20,7 +20,6 @@ in {
       dhcpcd.wait = "background";
       # avoid checking if IP is already taken to boot a few seconds faster
       dhcpcd.extraConfig = "noarp";
-      hostName = "nixos"; # Define your hostname.
       # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
       # Configure network proxy if necessary
       # proxy.default = "http://user:password@proxy:port/";

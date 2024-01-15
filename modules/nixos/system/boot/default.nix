@@ -5,11 +5,11 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.system.boot.bios;
+  cfg = config.system.boot;
 in
 {
-  options.system.boot.bios = with types; {
-    enable = mkBoolOpt false "Whether or not to enable bios booting.";
+  options.system.boot = with types; {
+    enable = mkBoolOpt false "Whether or not to enable booting.";
     device = mkOpt str "nodev" "Disk that grub will be installed to.";
   };
 
@@ -20,7 +20,7 @@ in
       kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
       supportedFilesystems = [ "ntfs" ];
       loader = {
-        systemd-boot.enable = false;
+        systemd-boot.enable = true;
         timeout = 20;
         efi = {
           canTouchEfiVariables = true;
@@ -28,8 +28,7 @@ in
         };
         grub = {
           enable = true;
-          # device = [ "nodev" ];
-          devices = "/dev/nvme0n1";
+          device = "nodev";
           efiSupport = true;
           useOSProber = true;
           configurationLimit = 5;

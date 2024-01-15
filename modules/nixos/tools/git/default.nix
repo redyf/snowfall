@@ -1,15 +1,15 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.git;
-in {
-  options.apps.git = with types; {
+  cfg = config.tools.git;
+in
+{
+  options.tools.git = with types; {
     enable = mkBoolOpt false "Enable or disable git";
   };
 
@@ -19,7 +19,7 @@ in {
       userName = "Redyf";
       userEmail = "mateusalvespereira7@gmail.com";
       extraConfig = {
-        init = {defaultBranch = "main";};
+        init = { defaultBranch = "main"; };
         core.editor = "nvim";
         pull.rebase = false;
       };

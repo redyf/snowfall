@@ -1,14 +1,14 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.apps.steam;
-in {
+in
+{
   options.apps.steam = with types; {
     enable = mkBoolOpt false "Enable or disable steam";
   };
@@ -25,7 +25,7 @@ in {
         name = "Steam (Gamepad UI)";
         desktopName = "Steam (Gamepad UI)";
         genericName = "Application for managing and playing games on Steam.";
-        categories = ["Network" "FileTransfer" "Game"];
+        categories = [ "Network" "FileTransfer" "Game" ];
         type = "Application";
         icon = "steam";
         exec = "steamos";

@@ -1,15 +1,15 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.desktop.addons.swww;
-in {
+in
+{
   options.desktop.addons.swww = with types; {
     enable = mkBoolOpt false "Enable or disable swww";
   };

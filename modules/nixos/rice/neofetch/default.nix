@@ -1,14 +1,14 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
+{ options
+, config
+, pkgs
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.rice.neofetch;
-in {
+in
+{
   options.rice.neofetch = with types; {
     enable = mkBoolOpt false "Enable or disable neofetch";
   };
