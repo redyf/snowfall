@@ -26,6 +26,7 @@ in
       };
     };
     tools = {
+      http = enabled;
       direnv = enabled;
       gnupg = disabled;
       nix-ld = disabled;
