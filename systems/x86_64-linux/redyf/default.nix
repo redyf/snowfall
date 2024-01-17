@@ -11,6 +11,8 @@ with lib.custom;
     ./hardware-configuration.nix
   ];
 
+  # TODO: Fix fonts monolisa and sf-mono + add more stuff to suites
+
   suites = {
     common = enabled;
     desktop = enabled;
@@ -19,6 +21,7 @@ with lib.custom;
     video = enabled;
     social = enabled;
     gaming = enabled;
+    rice = enabled;
   };
   # Change systemd stop job timeout in NixOS configuration (Default = 90s)
   systemd = {

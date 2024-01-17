@@ -30,5 +30,8 @@ in
       gnupg = disabled;
       nix-ld = disabled;
     };
+    virtualization = {
+      kvm = disabled;
+    };
   };
 }
