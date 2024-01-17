@@ -14,7 +14,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.git = {
+    home.extraOptions.programs.git = {
       enable = true;
       userName = "Redyf";
       userEmail = "mateusalvespereira7@gmail.com";

@@ -50,6 +50,13 @@ in
       propagatedIcon
     ];
 
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+
     environment.sessionVariables.FLAKE = "/home/redyf/.nixdots";
 
     home = {

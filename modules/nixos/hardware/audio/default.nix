@@ -1,4 +1,5 @@
-{ options
+{ pkgs
+, options
 , config
 , lib
 , ...
@@ -24,5 +25,9 @@ in
       pulse.enable = true;
     };
     programs.noisetorch.enable = true;
+    environment.systemPackages = with pkgs; [
+      easyeffects
+      pavucontrol
+    ];
   };
 }

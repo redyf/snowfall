@@ -35,8 +35,8 @@ in
       };
       packages = with pkgs;
         [
-          sf-mono-liga-bin
-          monolisa
+          # sf-mono-liga-bin
+          # monolisa
           noto-fonts
           dejavu_fonts
           font-awesome

@@ -1,31 +1,31 @@
-{ config
+{ lib
+, config
 , pkgs
 , inputs
 , ...
-}: {
+}: with lib;
+with lib.custom;
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
+  suites = {
+    common = enabled;
+    desktop = enabled;
+    development = enabled;
+    music = enabled;
+    video = enabled;
+    social = enabled;
+    gaming = enabled;
+  };
   # Change systemd stop job timeout in NixOS configuration (Default = 90s)
   systemd = {
     services.NetworkManager-wait-online.enable = false;
     extraConfig = ''
       DefaultTimeoutStopSec=10s
     '';
-  };
-
-  # Enable programs
-  programs = {
-    zsh.enable = true;
-    dconf.enable = true;
-    hyprland = {
-      enable = true;
-      xwayland = {
-        enable = true;
-      };
-    };
   };
 
   # Use overlays

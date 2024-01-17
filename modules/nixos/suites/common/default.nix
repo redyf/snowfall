@@ -4,26 +4,44 @@
 , pkgs
 , ...
 }:
-# TODO: Habilitar todos os apps por aqui e depois mudar o mkbool para true para ver se funciona
-# TODO: obs: funcionou hahahai
 with lib;
 with lib.custom; let
   cfg = config.suites.common;
 in
 {
   options.suites.common = with types; {
-    enable = mkBoolOpt true "Enable the common suite";
+    enable = mkBoolOpt false "Enable the common suite";
   };
 
   config = mkIf cfg.enable {
+
+    apps = {
+      firefox = enabled;
+      brave = disabled;
+      misc = enabled;
+    };
+
+    hardware = {
+      audio = enabled;
+      networking = enabled;
+      nvidia = enabled;
+    };
+
     system = {
-      boot = true;
+      boot = {
+        bios = enabled;
+        efi = disabled;
+      };
+      fonts = enabled;
+      locale = enabled;
+      nix = enabled;
+      security.doas = enabled;
+      time = enabled;
+      xkb = enabled;
     };
-    virtualization = {
-      kvm = true;
+
+    tools = {
+      git = enabled;
     };
-    # virtualization.kvm = {
-    #   enable = true;
-    # };
   };
 }

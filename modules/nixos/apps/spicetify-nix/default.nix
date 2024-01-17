@@ -16,7 +16,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.programs.spicetify = {
+    home.programs.spicetify-nix = {
       enable = true;
       theme = spicePkgs.themes.catppuccin;
       colorScheme = "mocha";

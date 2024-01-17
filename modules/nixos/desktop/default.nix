@@ -1,15 +1,15 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, inputs
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.desktop;
-in {
+in
+{
   options.desktop = with types; {
     colorscheme = mkOpt str "catppuccin-mocha" "Theme to use for the desktop";
     autoLogin = mkBoolOpt false "Enable autologin";
@@ -32,7 +32,7 @@ in {
         name = "Catppuccin-Macchiato-Compact-Blue-dark";
         package = pkgs.catppuccin-gtk.override {
           size = "compact";
-          accents = ["blue"];
+          accents = [ "blue" ];
           variant = "macchiato";
         };
       };

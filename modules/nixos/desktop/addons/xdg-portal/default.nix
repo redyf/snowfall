@@ -19,7 +19,7 @@ in
       portal = {
         enable = true;
         extraPortals = with pkgs; [
-          inputs.xdg-desktop-portal-hyprland.packages.${system}.xdg-desktop-portal-hyprland
+          xdg-desktop-portal-hyprland
         ];
       };
     };
