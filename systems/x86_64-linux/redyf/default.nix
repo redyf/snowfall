@@ -84,7 +84,6 @@ with lib.custom;
 
   environment.systemPackages = with pkgs; [
     git
-    wget
     playerctl
     deploy-rs
   ];
