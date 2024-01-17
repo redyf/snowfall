@@ -13,13 +13,14 @@ in
   };
 
   config = mkIf cfg.enable {
+    # sound.enable = true;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       wireplumber.enable = true;
-      jack.enable = true;
+      jack.enable = false;
       pulse.enable = true;
     };
     programs.noisetorch.enable = true;

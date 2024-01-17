@@ -34,7 +34,6 @@ in
       kitty.enable = true;
       wezterm.enable = true;
       xdg-portal.enable = true;
-      obs.enable = true;
     };
 
     environment.systemPackages = with pkgs; [

@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.desktop.addons.obs;
+  cfg = config.apps.obs;
 in
 {
-  options.desktop.addons.obs = with types; {
+  options.apps.obs = with types; {
     enable = mkBoolOpt false "Enable or disable the obs run launcher.";
   };
 

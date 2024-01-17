@@ -16,7 +16,7 @@ in
     home.programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
 
     environment.sessionVariables.DIRENV_LOG_FORMAT = ""; # Blank so direnv will shut up

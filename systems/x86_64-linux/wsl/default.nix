@@ -1,9 +1,8 @@
-{
-  lib,
-  pkgs,
-  config,
-  modulesPath,
-  ...
+{ lib
+, pkgs
+, config
+, modulesPath
+, ...
 }: {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
@@ -30,7 +29,7 @@
         description = "red";
         password = "123456";
         shell = pkgs.zsh;
-        extraGroups = ["wheel" "input" "docker"];
+        extraGroups = [ "wheel" "input" "docker" ];
       };
     };
   };
@@ -69,11 +68,6 @@
     neovim
   ];
 
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   # Enables docker in rootless mode
   # virtualisation = {
   #   docker.rootless = {
@@ -83,20 +77,20 @@
   # };
 
   # Enables flakes + garbage collector
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
-    settings = {
-      auto-optimise-store = true;
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
+  # nix = {
+  #   package = pkgs.nixFlakes;
+  #   extraOptions = "experimental-features = nix-command flakes";
+  #   settings = {
+  #     auto-optimise-store = true;
+  #     substituters = ["https://hyprland.cachix.org"];
+  #     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  #   };
+  #   gc = {
+  #     automatic = true;
+  #     dates = "weekly";
+  #     options = "--delete-older-than 7d";
+  #   };
+  # };
 
   system.stateVersion = "22.05";
 }
