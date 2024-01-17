@@ -15,8 +15,8 @@ in
 
   config =
     mkIf cfg.enable {
-      home = {
-        packages = with pkgs; [ pfetch ];
+      environment = {
+        systemPackages = with pkgs; [ pfetch ];
         sessionVariables.PF_INFO = "ascii title os kernel shell term desktop memory pkgs uptime scheme palette";
       };
     };

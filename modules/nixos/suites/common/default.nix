@@ -16,8 +16,14 @@ in
   };
 
   config = mkIf cfg.enable {
-    virtualization.kvm = {
-      enable = true;
+    system = {
+      boot = true;
     };
+    virtualization = {
+      kvm = true;
+    };
+    # virtualization.kvm = {
+    #   enable = true;
+    # };
   };
 }

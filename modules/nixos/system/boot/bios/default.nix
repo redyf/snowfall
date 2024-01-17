@@ -5,7 +5,7 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.system.boot;
+  cfg = config.system.boot.bios;
 in
 {
   options.system.boot.bios = with types; {

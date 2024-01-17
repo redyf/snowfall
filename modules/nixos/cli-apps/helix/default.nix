@@ -15,7 +15,7 @@ in
 
   config =
     mkIf cfg.enable {
-      programs.helix = {
+      home.extraOptions.programs.helix = {
         enable = true;
         catppuccin.enable = true;
         defaultEditor = true;

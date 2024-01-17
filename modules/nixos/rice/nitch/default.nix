@@ -15,6 +15,6 @@ in
 
   config =
     mkIf cfg.enable {
-      home.packages = [ pkgs.nitch ];
+      environment.systemPackages = [ pkgs.nitch ];
     };
 }

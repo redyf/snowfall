@@ -108,8 +108,8 @@
       # overlays = with inputs; [ ];
 
       # Add modules to all NixOS systems.
-      # systems.modules.nixos = with inputs; [
-      # ];
+      systems.modules.nixos = with inputs; [
+      ];
 
       # Add a module to a specific host.
       systems.hosts.wsl.modules = with inputs; [

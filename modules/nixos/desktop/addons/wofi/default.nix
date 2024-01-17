@@ -15,13 +15,13 @@ in
 
   config =
     mkIf cfg.enable {
-      home = {
-        packages = with pkgs; [
+      environment = {
+        systemPackages = with pkgs; [
           wofi
         ];
       };
 
-      xdg.configFile = {
+      home.extraOptions.xdg.configFile = {
         "wofi/config" = {
           text = ''
             width=600
