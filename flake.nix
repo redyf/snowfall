@@ -119,9 +119,9 @@
       ];
 
       # Add a module to a specific host.
-      # systems.hosts.wsl.modules = with inputs; [
-      #   NixOS-WSL.nixosModules.wsl
-      # ];
+      systems.hosts.wsl.modules = with inputs; [
+        NixOS-WSL.nixosModules.wsl
+      ];
 
       deploy = lib.mkDeploy {
         inherit (inputs) self;
