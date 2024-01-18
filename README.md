@@ -6,16 +6,16 @@
   <br>
   <br>
   <div>
-    <a href="https://github.com/Iogamaster/snowfall-starter/issues">
-        <img src="https://img.shields.io/github/issues/Iogamaster/snowfall-starter?color=fab387&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/redyf/snowfall/issues">
+        <img src="https://img.shields.io/github/issues/redyf/snowfall?color=fab387&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/Iogamaster/snowfall-starter/stargazers">
-        <img src="https://img.shields.io/github/stars/Iogamaster/snowfall-starter?color=ca9ee6&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/redyf/snowfall/stargazers">
+        <img src="https://img.shields.io/github/stars/redyf/snowfall?color=ca9ee6&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/Iogamaster/snowfall-starter">
-        <img src="https://img.shields.io/github/repo-size/Iogamaster/snowfall-starter?color=ea999c&labelColor=303446&style=for-the-badge">
+    <a href="https://github.com/redyf/snowfall">
+        <img src="https://img.shields.io/github/repo-size/redyf/snowfall?color=ea999c&labelColor=303446&style=for-the-badge">
     </a>
-    <a href="https://github.com/Iogamaster/snowfall-starter/blob/main/.github/LICENCE">
+    <a href="https://github.com/redyf/snowfall/blob/main/.github/LICENCE">
         <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=ca9ee6&colorA=313244&colorB=cba6f7"/>
     </a>
     <br>
