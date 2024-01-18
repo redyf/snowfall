@@ -11,7 +11,7 @@ with lib.custom;
     ./hardware-configuration.nix
   ];
 
-  # TODO: Fix fonts monolisa and sf-mono + add more stuff to suites
+  # TODO: Fix fonts monolisa and sf-mono
 
   suites = {
     common = enabled;

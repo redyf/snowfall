@@ -31,14 +31,13 @@ in
       gnupg = disabled;
       nix-ld = disabled;
       languages = {
+        c = enabled;
         rust = enabled;
         python = enabled;
         sql = enabled;
         javascript = enabled;
         lua = enabled;
-        c = enabled;
         markdown = enabled;
-        nix = enabled;
       };
     };
     virtualization = {
