@@ -1,13 +1,13 @@
-{
-  options,
-  config,
-  lib,
-  ...
+{ options
+, config
+, lib
+, ...
 }:
 with lib;
 with lib.custom; let
   cfg = config.system.locale;
-in {
+in
+{
   options.system.locale = with types; {
     enable = mkBoolOpt false "Whether or not to manage locale settings.";
   };
@@ -29,6 +29,6 @@ in {
     };
 
     # Configure console keymap
-    console = {keyMap = mkForce "br-abnt2";};
+    console = { keyMap = mkForce "br-abnt2"; };
   };
 }
