@@ -1,9 +1,8 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
+{ options
+, config
+, lib
+, pkgs
+, ...
 }:
 with lib;
 with lib.custom; let
@@ -14,9 +13,10 @@ with lib.custom; let
     rev = "06d519c20798f0ebe275fc3a8101841faaeee8ea";
     sha256 = "sha256-Q7KmwUd9fblprL55W0Sf4g7lRcemnhjh4/v+TacJSfo=";
   };
-in {
+in
+{
   options.system.shell = with types; {
-    shell = mkOpt (enum ["nushell" "fish" "zsh"]) "zsh" "What shell to use";
+    shell = mkOpt (enum [ "nushell" "fish" "zsh" ]) "zsh" "What shell to use";
   };
 
   config = {
@@ -101,7 +101,7 @@ in {
         zoxide = {
           enable = true;
           enableZshIntegration = true;
-          options = [];
+          options = [ ];
         };
 
         # Actual Shell Configurations
@@ -126,7 +126,7 @@ in {
         # Enable all if nushell
         nushell = mkIf (cfg.shell == "nushell") {
           enable = true;
-          shellAliases = config.environment.shellAliases // {ls = "ls";};
+          shellAliases = config.environment.shellAliases // { ls = "ls"; };
           envFile.text = "";
           extraConfig = ''
             $env.config = {
@@ -334,80 +334,82 @@ in {
           ];
         };
 
-        starship = let
-          flavour = "macchiato"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
-        in {
-          enable = true;
-          enableZshIntegration = true;
-          settings =
-            # Catppuccin
-            {
-              scan_timeout = 10;
-              add_newline = false;
-              line_break.disabled = false;
-              right_format = "$time";
-              character = {
-                success_symbol = "[](#cbced3)";
-                error_symbol = "[](#dd6777)";
-                vicmd_symbol = "[](#ecd3a0)";
-                format = "$symbol[ ](bold #b4befe) ";
-                # format = "$symbol[λ ](bold #3fdaa4) ";
-                # format = "$symbol[✘ ](bold #3fdaa4) ";
-              };
-              palette = "catppuccin_${flavour}";
-              git_commit = {commit_hash_length = 5;};
-
-              lua.symbol = "[](blue) ";
-              python.symbol = "[](blue) ";
-              nix_shell.symbol = "[](blue) ";
-              rust.symbol = "[](red) ";
-              dart.symbol = "[](blue) ";
-              nodejs.version_format = "v$raw(blue)";
-              package.symbol = "📦  ";
-
-              username = {
-                show_always = false;
-                style_user = "bold bg:none fg:#7aa2f7";
-                format = "[$user]($style)";
-              };
-
-              hostname = {
-                disabled = true;
-                ssh_only = false;
-                style = "bold bg:none fg:#CDD6F4";
-                format = "@[$hostname]($style) ";
-              };
-
-              directory = {
-                read_only = " ";
-                truncation_length = 3;
-                truncation_symbol = "./";
-                # style = "bold bg:none fg:#393939";
-                # style = "bold bg:none fg:#7aa2f7";
-                style = "bold bg:none fg:#b4befe";
-                # style = "bold bg:none fg:#7dcfff";
-                # style = "bold bg:none fg:#ec6a88";
-              };
-
-              time = {
-                disabled = true;
-                use_12hr = true;
-                time_range = "-";
-                time_format = "%R";
-                utc_time_offset = "local";
-                format = "[ $time 󰥔]($style) ";
-                style = "bold #393939";
-              };
-            }
-            // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub
+        starship =
+          let
+            flavour = "macchiato"; # One of `latte`, `frappe`, `macchiato`, or `mocha`
+          in
+          {
+            enable = true;
+            enableZshIntegration = true;
+            settings =
+              # Catppuccin
               {
-                owner = "catppuccin";
-                repo = "starship";
-                rev = "HEAD";
-                sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+                scan_timeout = 10;
+                add_newline = false;
+                line_break.disabled = false;
+                right_format = "$time";
+                character = {
+                  success_symbol = "[](#cbced3)";
+                  error_symbol = "[](#dd6777)";
+                  vicmd_symbol = "[](#ecd3a0)";
+                  format = "$symbol[ ](bold #b4befe) ";
+                  # format = "$symbol[λ ](bold #3fdaa4) ";
+                  # format = "$symbol[✘ ](bold #3fdaa4) ";
+                };
+                palette = "catppuccin_${flavour}";
+                git_commit = { commit_hash_length = 5; };
+
+                lua.symbol = "[](blue) ";
+                python.symbol = "[](blue) ";
+                nix_shell.symbol = "[](blue) ";
+                rust.symbol = "[](red) ";
+                dart.symbol = "[](blue) ";
+                nodejs.version_format = "v$raw(blue)";
+                package.symbol = "📦  ";
+
+                username = {
+                  show_always = false;
+                  style_user = "bold bg:none fg:#7aa2f7";
+                  format = "[$user]($style)";
+                };
+
+                hostname = {
+                  disabled = true;
+                  ssh_only = false;
+                  style = "bold bg:none fg:#CDD6F4";
+                  format = "@[$hostname]($style) ";
+                };
+
+                directory = {
+                  read_only = " ";
+                  truncation_length = 3;
+                  truncation_symbol = "./";
+                  # style = "bold bg:none fg:#393939";
+                  # style = "bold bg:none fg:#7aa2f7";
+                  style = "bold bg:none fg:#b4befe";
+                  # style = "bold bg:none fg:#7dcfff";
+                  # style = "bold bg:none fg:#ec6a88";
+                };
+
+                time = {
+                  disabled = true;
+                  use_12hr = true;
+                  time_range = "-";
+                  time_format = "%R";
+                  utc_time_offset = "local";
+                  format = "[ $time 󰥔]($style) ";
+                  style = "bold #393939";
+                };
               }
+              // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub
+                {
+                  owner = "catppuccin";
+                  repo = "starship";
+                  rev = "HEAD";
+                  sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+                }
               + /palettes/${flavour}.toml));
-        };
+          };
 
         # Mocha
         #   {
