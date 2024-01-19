@@ -17,7 +17,7 @@ in
 
     apps = {
       firefox = enabled;
-      brave = disabled;
+      spicetify = enabled;
       misc = enabled;
     };
 

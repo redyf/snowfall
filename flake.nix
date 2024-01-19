@@ -63,7 +63,7 @@
 
   outputs = inputs:
     let
-      inherit (inputs) spicetify-nix nixpkgs;
+      inherit (inputs) nixpkgs;
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
@@ -108,7 +108,7 @@
       # in addition to the ones that `lib` will create from your `packages/` directory.
       # outputs-builder = channels: {
       #   packages = {
-      #     spicetify-nix = inputs.spicetify-nix.packages.${channels.nixpkgs.system}.spicetify-nix;
+      #     spicetify-nix = spicetify-nix.packages.${channels.nixpkgs.system}.default;
       #   };
       # };
 
@@ -116,6 +116,7 @@
 
       # Add modules to all NixOS systems.
       systems.modules.nixos = with inputs; [
+        spicetify-nix.nixosModule
       ];
 
       # Add a module to a specific host.
