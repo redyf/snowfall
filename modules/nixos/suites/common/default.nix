@@ -17,7 +17,7 @@ in
 
     apps = {
       firefox = enabled;
-      brave = disabled;
+      spicetify = enabled;
       misc = enabled;
     };
 
@@ -42,6 +42,9 @@ in
 
     tools = {
       git = enabled;
+      languages = {
+        c = enabled;
+      };
     };
   };
 }

@@ -7,16 +7,17 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.spicetify-nix;
+  cfg = config.apps.spicetify;
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in
 {
-  options.apps.spicetify-nix = with types; {
+  options.apps.spicetify = with types; {
     enable = mkBoolOpt false "Enable spicetify-nix";
   };
 
   config = mkIf cfg.enable {
-    home.programs.spicetify-nix = {
+
+    programs.spicetify = {
       enable = true;
       theme = spicePkgs.themes.catppuccin;
       colorScheme = "mocha";

@@ -32,6 +32,7 @@ in
       nix-ld = disabled;
       languages = {
         c = enabled;
+        java = enabled;
         rust = enabled;
         python = enabled;
         sql = enabled;

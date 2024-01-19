@@ -17,8 +17,8 @@ in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
         jdk8 # Java dev kit
-        maven # Build automation tool for java
-        spring-boot-cli
+        # maven # Build automation tool for java
+        # spring-boot-cli
       ];
     };
 }
