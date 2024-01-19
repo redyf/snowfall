@@ -124,15 +124,15 @@
         NixOS-WSL.nixosModules.wsl
       ];
 
-      deploy = lib.mkDeploy {
-        inherit (inputs) self;
-      };
-
-      checks =
-        builtins.mapAttrs
-          (_system: deploy-lib:
-            deploy-lib.deployChecks inputs.self.deploy)
-          inputs.deploy-rs.lib;
+      # deploy = lib.mkDeploy {
+      #   inherit (inputs) self;
+      # };
+      #
+      # checks =
+      #   builtins.mapAttrs
+      #     (_system: deploy-lib:
+      #       deploy-lib.deployChecks inputs.self.deploy)
+      #     inputs.deploy-rs.lib;
 
       templates = import ./templates { };
 

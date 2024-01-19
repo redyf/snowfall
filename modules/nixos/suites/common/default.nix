@@ -42,6 +42,9 @@ in
 
     tools = {
       git = enabled;
+      languages = {
+        c = enabled;
+      };
     };
   };
 }
