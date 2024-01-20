@@ -33,9 +33,9 @@ in
 
     environment = {
       variables = {
-        # GBM_BACKEND = "nvidia-drm";
-        # LIBVA_DRIVER_NAME = "nvidia";
-        # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        GBM_BACKEND = "nvidia-drm";
+        LIBVA_DRIVER_NAME = "nvidia";
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         __GL_GSYNC_ALLOWED = "1";
         __GL_VRR_ALLOWED = "0"; # Controls if Adaptive Sync should be used. Recommended to set as “0” to avoid having problems on some games.
         XCURSOR_THEME = "macOS-BigSur";
@@ -46,7 +46,7 @@ in
       };
       sessionVariables = {
         NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
-        # WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor rendering issue on wlr nvidia.
+        WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor rendering issue on wlr nvidia.
         DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox"; # Set default browser
       };
       shellAliases = { nvidia-settings = "nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"; };

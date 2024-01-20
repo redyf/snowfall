@@ -47,6 +47,31 @@ in
       (writeShellScriptBin "screenshot-edit" ''
         wl-paste | swappy -f -
       '')
+      (writeShellScriptBin "autostart" ''
+        # Variables
+        config=$HOME/.config/hypr
+        scripts=$config/scripts
+
+        # Waybar
+        pkill waybar
+        $scripts/launch_waybar &
+        $scripts/tools/dynamic &
+
+        # Wallpaper
+        swww kill
+        swww init
+
+        # Dunst (Notifications)
+        dunst &
+
+        # Cursor
+        # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 24
+        hyprctl setcursor "macOS-BigSur" 32
+
+        # Others
+        /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+        dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+      '')
     ];
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
@@ -166,9 +191,9 @@ in
         };
 
         exec-once = [
+          "autostart"
           "easyeffects --gapplication-service" # Starts easyeffects in the background
-          "$HOME/.config/hypr/autostart"
-          "exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          # "$HOME/.config/hypr/autostart"
         ];
 
         bind = [
@@ -312,33 +337,33 @@ in
       };
 
       # Submaps
-      extraConfig = ''
-             # source = ~/.config/hypr/themes/catppuccin-macchiato.conf
-             # source = ~/.config/hypr/themes/oxocarbon.conf
-             env = LIBVA_DRIVER_NAME,nvidia
-             env = XDG_SESSION_TYPE,wayland
-             env = GBM_BACKEND,nvidia-drm
-             env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-             env = WLR_NO_HARDWARE_CURSORS,1
-        #     # will switch to a submap called resize
-        #     bind=$mainMod,R,submap,resize
-        #
-        #     # will start a submap called "resize"
-        #     submap=resize
-        #
-        #     # sets repeatable binds for resizing the active window
-        #     binde=,L,resizeactive,15 0
-        #     binde=,H,resizeactive,-15 0
-        #     binde=,K,resizeactive,0 -15
-        #     binde=,J,resizeactive,0 15
-        #
-        #     # use reset to go back to the global submap
-        #     bind=,escape,submap,reset
-        #     bind=$mainMod,R,submap,reset
-        #
-        #     # will reset the submap, meaning end the current one and return to the global one
-        #     submap=reset
-      '';
+      # extraConfig = ''
+      #        # source = ~/.config/hypr/themes/catppuccin-macchiato.conf
+      #        # source = ~/.config/hypr/themes/oxocarbon.conf
+      #        env = GBM_BACKEND,nvidia-drm
+      #        env = LIBVA_DRIVER_NAME,nvidia
+      #        env = XDG_SESSION_TYPE,wayland
+      #        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+      #        env = WLR_NO_HARDWARE_CURSORS,1
+      #   #     # will switch to a submap called resize
+      #   #     bind=$mainMod,R,submap,resize
+      #   #
+      #   #     # will start a submap called "resize"
+      #   #     submap=resize
+      #   #
+      #   #     # sets repeatable binds for resizing the active window
+      #   #     binde=,L,resizeactive,15 0
+      #   #     binde=,H,resizeactive,-15 0
+      #   #     binde=,K,resizeactive,0 -15
+      #   #     binde=,J,resizeactive,0 15
+      #   #
+      #   #     # use reset to go back to the global submap
+      #   #     bind=,escape,submap,reset
+      #   #     bind=$mainMod,R,submap,reset
+      #   #
+      #   #     # will reset the submap, meaning end the current one and return to the global one
+      #   #     submap=reset
+      # '';
     };
     # Hyprland configuration files
     home.configFile = {
@@ -348,11 +373,14 @@ in
       "hypr/store/latest_notif".source = ./store/latest_notif;
       "hypr/scripts/wall".source = ./scripts/wall;
       "hypr/scripts/launch_waybar".source = ./scripts/launch_waybar;
-      "hypr/script/tools/dynamic".source = ./scripts/tools/dynamic;
-      "hypr/script/tools/expand".source = ./scripts/tools/expand;
-      "hypr/script/tools/notif".source = ./scripts/tools/notif;
-      "hypr/script/tools/start_dyn".source = ./scripts/tools/start_dyn;
-      "hypr/script/tools/swww".source = ./scripts/tools/swww;
+      "hypr/scripts/tools/dynamic".source = ./scripts/tools/dynamic;
+      "hypr/scripts/tools/expand".source = ./scripts/tools/expand;
+      "hypr/scripts/tools/notif".source = ./scripts/tools/notif;
+      "hypr/scripts/tools/start_dyn".source = ./scripts/tools/start_dyn;
+      "hypr/scripts/tools/swww".source = ./scripts/tools/swww;
     };
   };
 }
+
+
+

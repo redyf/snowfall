@@ -23,6 +23,11 @@ with lib.custom;
     gaming = enabled;
     rice = enabled;
   };
+
+  programs.hyprland = {
+    enable = true;
+  };
+
   # Change systemd stop job timeout in NixOS configuration (Default = 90s)
   systemd = {
     services.NetworkManager-wait-online.enable = false;
