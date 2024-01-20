@@ -63,7 +63,7 @@
 
   outputs = inputs:
     let
-      inherit (inputs) nixpkgs;
+      inherit (inputs) hyprland nixpkgs;
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
@@ -123,6 +123,10 @@
       systems.hosts.wsl.modules = with inputs; [
         NixOS-WSL.nixosModules.wsl
       ];
+
+      # Add modules to all homes.
+      # homes.modules = with inputs; [
+      # ];
 
       # deploy = lib.mkDeploy {
       #   inherit (inputs) self;

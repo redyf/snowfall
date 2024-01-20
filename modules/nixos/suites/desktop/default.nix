@@ -15,16 +15,17 @@ in
 
   config = mkIf cfg.enable {
     desktop = {
+      hyprland = enabled;
+      xfce = enabled;
+      xmonad = enabled;
       addons = {
         bemenu = enabled;
         swww = enabled;
         wezterm = enabled;
+        foot = enabled;
         waybar = enabled;
         xdg-portal = enabled;
       };
-      hyprland = enabled;
-      xfce = enabled;
-      xmonad = enabled;
     };
     services.xserver = {
       enable = true;
