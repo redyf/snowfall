@@ -23,7 +23,7 @@ in
         swww = enabled;
         wezterm = enabled;
         foot = enabled;
-        waybar = enabled;
+        waybar = disabled;
         xdg-portal = enabled;
       };
     };

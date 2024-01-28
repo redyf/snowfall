@@ -17,6 +17,7 @@ in
 
     apps = {
       firefox = enabled;
+      floorp = enabled;
       spicetify = enabled;
       misc = enabled;
     };

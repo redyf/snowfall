@@ -29,6 +29,8 @@ in
       polkit_gnome
       networkmanager
 
+      # Auth
+      authy
       # Office + PDF readers
       wpsoffice # MS office alternative for linux
       zathura # PDF viewer

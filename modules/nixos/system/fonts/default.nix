@@ -44,6 +44,7 @@ in
           powerline-symbols
           material-design-icons
           commit-mono
+          ubuntu_font_family
           (nerdfonts.override { fonts = [ "IBMPlexMono" "CascadiaCode" "FiraCode" "FiraMono" "JetBrainsMono" "Ubuntu" ]; })
         ]
         ++ cfg.fonts;

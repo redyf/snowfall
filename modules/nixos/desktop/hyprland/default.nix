@@ -27,7 +27,7 @@ in
 
   config = mkIf cfg.enable {
     desktop.addons = {
-      waybar.enable = true;
+      waybar.enable = false;
       swww.enable = true;
       bemenu.enable = true;
       foot.enable = true;
@@ -75,8 +75,7 @@ in
     ];
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
-      # package = pkgs.hyprland;
-      package = hyprland_flake;
+      package = pkgs.hyprland; # hyprland_flake or pkgs.hyprland
       xwayland = {
         enable = true;
       };
