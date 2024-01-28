@@ -75,7 +75,8 @@ in
     ];
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland;
+      # package = pkgs.hyprland;
+      package = hyprland_flake;
       xwayland = {
         enable = true;
       };
