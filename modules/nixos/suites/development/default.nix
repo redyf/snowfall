@@ -32,10 +32,10 @@ in
       nix-ld = disabled;
       languages = {
         c = enabled;
-        java = enabled;
+        java = disabled;
         rust = enabled;
         python = enabled;
-        sql = enabled;
+        sql = disabled;
         javascript = enabled;
         lua = enabled;
         markdown = enabled;

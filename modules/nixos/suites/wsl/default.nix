@@ -27,7 +27,7 @@ in
       fonts = disabled;
       locale = enabled;
       nix = enabled;
-      security.doas = enabled;
+      security.doas = disabled;
       time = enabled;
       xkb = enabled;
     };
@@ -41,13 +41,13 @@ in
         dart = disabled;
         elixir = disabled;
         go = disabled;
-        java = enabled;
+        java = disabled;
         javascript = enabled;
         lua = enabled;
         markdown = enabled;
         python = enabled;
         rust = enabled;
-        sql = enabled;
+        sql = disabled;
       };
     };
   };
