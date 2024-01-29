@@ -18,8 +18,8 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    NixOS-WSL = {
-      url = "github:nix-community/NixOS-WSL";
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -121,7 +121,7 @@
 
       # Add a module to a specific host.
       systems.hosts.wsl.modules = with inputs; [
-        NixOS-WSL.nixosModules.wsl
+        inputs.nixos-wsl.nixosModules.wsl
       ];
 
       # Add modules to all homes.
