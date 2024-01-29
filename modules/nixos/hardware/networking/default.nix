@@ -14,7 +14,7 @@ in
 
   config = mkIf cfg.enable {
     networking = {
-      networkmanager.enable = true;
+      networkmanager.enable = false;
       enableIPv6 = false;
       # no need to wait interfaces to have an IP to continue booting
       dhcpcd.wait = "background";
