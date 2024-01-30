@@ -195,6 +195,8 @@ in
               export PATH=$PATH:~/.local/bin/
               export PATH=/tmp/lazy-lvim/bin:$PATH
               export PATH="$HOME/.emacs.d/bin:$PATH"
+              export PATH="$PATH:/run/current-system/sw/bin/jdtls"
+              export PATH="$PATH:/run/current-system/sw/bin/jdt-language-server"
               export PATH="$PATH:/home/redyf/.nix-profile/bin/elixir"
               export PATH="$PATH:/home/redyf/.nix-profile/bin/swww"
               export PATH="$PATH:/home/redyf/.nix-profile/bin/swww-daemon"

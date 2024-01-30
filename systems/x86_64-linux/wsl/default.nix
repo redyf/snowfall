@@ -7,9 +7,9 @@
 }: with lib;
 with lib.custom;
 {
-#  imports = [
-#  <nixos-wsl/modules>
-#  ];
+  #  imports = [
+  #  <nixos-wsl/modules>
+  #  ];
 
   suites = {
     wsl = enabled;

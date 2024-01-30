@@ -26,16 +26,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    desktop.addons = {
-      waybar.enable = false;
-      swww.enable = true;
-      bemenu.enable = true;
-      foot.enable = true;
-      kitty.enable = true;
-      wezterm.enable = true;
-      xdg-portal.enable = true;
-    };
-
     environment.systemPackages = with pkgs; [
       grim
       slurp

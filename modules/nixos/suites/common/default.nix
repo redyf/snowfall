@@ -16,7 +16,7 @@ in
   config = mkIf cfg.enable {
 
     apps = {
-      firefox = enabled;
+      firefox = disabled;
       floorp = enabled;
       spicetify = enabled;
       misc = enabled;
@@ -39,13 +39,6 @@ in
       security.doas = enabled;
       time = enabled;
       xkb = enabled;
-    };
-
-    tools = {
-      git = enabled;
-      languages = {
-        c = enabled;
-      };
     };
   };
 }
