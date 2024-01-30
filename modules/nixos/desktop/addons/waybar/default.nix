@@ -12,8 +12,8 @@ with lib.custom; let
   # waybar_config = import ./og/config.nix {inherit osConfig config lib pkgs;};
   # waybar_style = import ./og/style.nix {inherit (config) colorscheme;};
   # NixBar
-  # waybar_config = import ./nixbar/config.nix {inherit osConfig config lib pkgs;};
-  # waybar_style = import ./nixbar/style.nix {inherit (config) colorscheme;};
+  waybar_config = import ./nixbar/config.nix { inherit osConfig config lib pkgs; };
+  waybar_style = import ./nixbar/style.nix { inherit (config) colorscheme; };
   # Tokyonight
   # waybar_config = import ./tokyonight/config.nix {inherit osConfig config lib pkgs;};
   # waybar_style = import ./tokyonight/style.nix {inherit (config) colorscheme;};

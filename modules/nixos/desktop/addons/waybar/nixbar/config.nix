@@ -27,7 +27,7 @@ in
     ];
     modules-center = [
       "cava#left"
-      "wlr/workspaces"
+      "hyprland/workspaces"
       "cava#right"
     ];
     modules-right = [
@@ -39,12 +39,12 @@ in
       "clock"
     ];
     clock = {
-      format = " {:%a, %d %b, %I:%M %p}";
+      format = "󰥔  {:%a, %d %b, %I:%M %p}";
       tooltip = "true";
       tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-      format-alt = " {:%d/%m}";
+      format-alt = "   {:%d/%m}";
     };
-    "wlr/workspaces" = {
+    "hyprland/workspaces" = {
       active-only = false;
       all-outputs = false;
       disable-scroll = false;
