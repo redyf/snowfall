@@ -22,17 +22,18 @@ in
     };
     desktop = {
       addons = {
-        wezterm = enabled;
+        foot = enabled;
       };
     };
     tools = {
+      git = enabled;
       http = enabled;
       direnv = enabled;
       gnupg = disabled;
       nix-ld = disabled;
       languages = {
         c = enabled;
-        java = disabled;
+        java = enabled;
         rust = enabled;
         python = enabled;
         sql = disabled;
