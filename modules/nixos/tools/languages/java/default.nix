@@ -16,7 +16,11 @@ in
   config =
     mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
-        jdk8 # Java dev kit
+        jdk # Java dev kit
+        # jdk8 # Java dev kit
+        jdt-language-server
+        google-java-format
+        checkstyle
         # maven # Build automation tool for java
         # spring-boot-cli
       ];
