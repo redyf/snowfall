@@ -183,7 +183,6 @@ in
         exec-once = [
           "autostart"
           "easyeffects --gapplication-service" # Starts easyeffects in the background
-          # "$HOME/.config/hypr/autostart"
         ];
 
         bind = [
@@ -213,8 +212,6 @@ in
           "SUPER,6,workspace,6"
           "SUPER,7,workspace,7"
           "SUPER,8,workspace,8"
-          # "SUPER,9,workspace,9"
-          # "SUPER,0,workspace,10"
 
           #CTRL,1,workspace,1
           #CTRL,2,workspace,2
@@ -257,10 +254,9 @@ in
           "SUPER $mainMod SHIFT, 6, movetoworkspacesilent, 6"
           "SUPER $mainMod SHIFT, 7, movetoworkspacesilent, 7"
           "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
-          # "SUPER $mainMod SHIFT, 9, movetoworkspacesilent, 9"
-          # "SUPER $mainMod SHIFT, 0, movetoworkspacesilent, 10"
 
-          "SUPER,RETURN,exec,foot"
+          "SUPER,RETURN,exec,alacritty"
+          "ALT,RETURN,exec,foot"
           "SUPER,n,exec,neovide"
           "SUPER,e,exec,emacsclient -c -a 'emacs'"
           ",Print,exec,screenshot"
