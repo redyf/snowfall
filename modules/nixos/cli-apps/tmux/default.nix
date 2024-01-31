@@ -40,11 +40,6 @@ in
           bind -T root M-Left previous-window
           bind -T root M-Right next-window
 
-          # keybindings
-          # bind-key -T copy-mode-vi v send-keys -X begin-selection
-          # bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-          # bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
           # Open panes in current directory
           bind '"' split-window -v -c "#{pane_current_path}"
           bind % split-window -h -c "#{pane_current_path}"
@@ -52,6 +47,17 @@ in
           # Enable catppuccin theme
           set -g @catppuccin_flavour 'mocha'
 
+          # Biscuit
+          # set-option -g status-left-length 0
+          # set-option -g status-right-length 0
+          # set -g status-position bottom
+          # set -g status-justify centre
+          # set -g status-left "#[bg=#171717, fg=#8e8aa9]   #[bg=#171717, fg=#a38c8c]#{session_name} #[fg=#151515]█#[fg=#131313]█#[fg=#111111]█"
+          # set -g window-status-format "#[bg=#171717, fg=#736363] #I:#W "
+          # set -g window-status-current-format "#[bg=#171717, fg=#8e8aa9] #I·#W "
+          # set -g status-right "#[fg=#111111]█#[fg=#131313]█#[fg=#151515]█#[bg=#171717, fg=#a38c8c] %H:%M #[bg=#171717, fg=#8e8aa9]  "
+          # set -g window-status-activity-style none
+          #
           # Tokyonight
           # # ----- Messages -----
           # set-option -g mode-style 'bg=blue, fg=black'
