@@ -74,6 +74,27 @@ in
             # bright6 = "94E2D5"; # teal
             # bright7 = "A6ADC8"; # Subtext 0
 
+            # Biscuit
+            # alpha = "0.9";
+            # background = "1a1515";
+            # foreground = "ffe9c7";
+            # regular0 = "2d2424"; # black
+            # regular1 = "cf2241"; # red
+            # regular2 = "f07942"; # green
+            # regular3 = "e39c45"; # yellow
+            # regular4 = "949f6b"; # blue
+            # regular5 = "716c97"; # magenta
+            # regular6 = "ae3f8a"; # cyan
+            # regular7 = "9c8181"; # white
+            # bright0 = "725a5a"; # bright black
+            # bright1 = "e3556f"; # bright red
+            # bright2 = "f49d75"; # bright green
+            # bright3 = "edbf86"; # bright yellow
+            # bright4 = "b0b893"; # bright blue
+            # bright5 = "9894b3"; # bright magenta
+            # bright6 = "ca6bac"; # bright cyan
+            # bright7 = "ffe9c7"; # bright white
+
             # Jabuti
             # alpha = "1.0";
             # foreground = "d9e0ee";
