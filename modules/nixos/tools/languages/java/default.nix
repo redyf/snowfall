@@ -17,12 +17,16 @@ in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
         jdk # Java dev kit
-        # jdk8 # Java dev kit
         jdt-language-server
         google-java-format
         checkstyle
+        vscode-extensions.vscjava.vscode-java-debug
+        vscode-extensions.vscjava.vscode-java-test
         # maven # Build automation tool for java
         # spring-boot-cli
       ];
+      tools = {
+        intellij = enabled;
+      };
     };
 }
