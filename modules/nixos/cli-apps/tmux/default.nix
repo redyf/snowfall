@@ -46,6 +46,9 @@ in
 
           # Enable catppuccin theme
           set -g @catppuccin_flavour 'mocha'
+          # Enable transparent tmux bar
+          set -g status-bg default
+          set -g status-style bg=default
 
           # Biscuit
           # set-option -g status-left-length 0
