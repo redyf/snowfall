@@ -344,7 +344,7 @@ in
 
     # Hyprland configuration files
     home.configFile = {
-      "hypr/autostart".source = ./autostart;
+      # "hypr/autostart".source = ./autostart;
       "hypr/store/dynamic_out.txt".source = ./store/dynamic_out.txt;
       "hypr/store/prev.txt".source = ./store/prev.txt;
       "hypr/store/latest_notif".source = ./store/latest_notif;
