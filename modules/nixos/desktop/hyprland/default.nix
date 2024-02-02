@@ -8,7 +8,7 @@
 with lib;
 with lib.custom; let
   cfg = config.desktop.hyprland;
-  hyprland_flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  hyprlandFlake = inputs.hyprland.packages.${pkgs.system}.hyprland;
   fontsize = "12";
   oxocarbon_pink = "ff7eb6";
   oxocarbon_border = "393939";
@@ -52,11 +52,11 @@ in
         swww init
 
         # Dunst (Notifications)
+        pkill dunst
         dunst &
 
         # Cursor
-        # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 24
-        hyprctl setcursor "macOS-BigSur" 32
+        hyprctl setcursor "macOS-BigSur" 32 # "Catppuccin-Mocha-Mauve-Cursors"
 
         # Others
         /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -65,7 +65,7 @@ in
     ];
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.hyprland; # hyprland_flake or pkgs.hyprland
+      package = hyprlandFlake; # hyprlandFlake or pkgs.hyprland
       xwayland = {
         enable = true;
       };
@@ -213,13 +213,6 @@ in
           "SUPER,7,workspace,7"
           "SUPER,8,workspace,8"
 
-          #CTRL,1,workspace,1
-          #CTRL,2,workspace,2
-          #CTRL,3,workspace,3
-          #CTRL,4,workspace,4
-          #CTRL,5,workspace,5
-          #CTRL,6,workspace,6
-
           ################################## Move ###########################################
           "SUPER SHIFT, H, movewindow, l"
           "SUPER SHIFT, L, movewindow, r"
@@ -256,7 +249,6 @@ in
           "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
 
           "SUPER,RETURN,exec,alacritty"
-          "ALT,RETURN,exec,foot"
           "SUPER,n,exec,neovide"
           "SUPER,e,exec,emacsclient -c -a 'emacs'"
           ",Print,exec,screenshot"
@@ -266,8 +258,6 @@ in
           "SUPER,z,exec,waybar"
           # "SUPER,space,exec, tofi-drun --drun-launch=true"
           # SUPER,space,exec,wofi --show drun -I -s ~/.config/wofi/style.css DP-3
-          # "SUPER SHIFT,V,exec,~/.config/eww/fool_moon/bar/scripts/widgets toggle-clip"
-          # "SUPER SHIFT,C,exec,~/.config/hypr/scripts/wallpaper_picker"
         ];
 
         bindm = [
@@ -351,6 +341,7 @@ in
       #   #     submap=reset
       # '';
     };
+
     # Hyprland configuration files
     home.configFile = {
       "hypr/autostart".source = ./autostart;
